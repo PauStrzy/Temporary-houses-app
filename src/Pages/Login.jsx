@@ -3,10 +3,21 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
+import { Box } from '@mui/material'
+Box
 
 function Login() {
 	return (
-		<div className='Login'>
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				justifyContent: 'center',
+				height: '100vh',
+				maxWidth: 300,
+				mx: 'auto',
+			}}>
 			<Typography component='h1' variant='h5'>
 				Zaloguj się
 			</Typography>
@@ -34,10 +45,10 @@ function Login() {
 				autoComplete='current-password'
 			/>
 			<FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Zapamiętaj mnie' />
-			<Button fullWidth variant='contained' type='submit'>
-				Zaloguj
+			<Button fullWidth variant='contained' type='submit' sx={{ fontSize: 18 }}>
+				Zaloguj się
 			</Button>
-		</div>
+		</Box>
 	)
 }
 
