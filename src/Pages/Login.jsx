@@ -14,7 +14,7 @@ function Login() {
 				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
-				height: '100vh',
+				height: '90vh',
 				maxWidth: 300,
 				mx: 'auto',
 			}}>

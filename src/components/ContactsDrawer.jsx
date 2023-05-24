@@ -11,10 +11,11 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail'
 import HomeIcon from '@mui/icons-material/Home'
 import { homes } from '../homes'
+import { Box } from '@mui/material'
 
 const ContactsDrawer = () => {
 	return (
-		<div>
+		<Box>
 			<Toolbar>
 				<Typography variant='h6' sx={{ fontWeight: 'bold' }}>
 					Lista kontaktów
@@ -57,7 +58,7 @@ const ContactsDrawer = () => {
 					)
 				})}
 			</List>
-		</div>
+		</Box>
 	)
 }
 export default ContactsDrawer

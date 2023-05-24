@@ -10,6 +10,7 @@ import ContactsDrawer from '../components/ContactsDrawer'
 import PetsIcon from '@mui/icons-material/Pets'
 import Tooltip from '@mui/material/Tooltip'
 import AccountMenu from '../components/AccountMenu'
+import StickyFooter from '../components/StickyFooter'
 
 const drawerWidth = 300
 
@@ -29,70 +30,75 @@ const HomesList = () => {
 	}
 
 	return (
-		<Box sx={{ display: 'flex' }}>
-			<AppBar
-				position='fixed'
-				sx={{
-					width: { sm: `calc(100% - ${drawerWidth}px)` },
-				}}>
-				<Toolbar>
-					<IconButton
-						color='inherit'
-						aria-label='open drawer'
-						edge='start'
-						onClick={handleDrawerToggle}
-						sx={{ mr: 2, display: { sm: 'none' } }}
-						aria-controls={openEl ? 'account-menu' : undefined}
-						aria-haspopup='true'
-						aria-expanded={openEl ? 'true' : undefined}>
-						<PeopleAltIcon />
-					</IconButton>
-					<Typography variant='h6' noWrap component='div' sx={{ textAlign: 'right', width: '100%' }}>
-						PawsTemporary
-					</Typography>
-					<Tooltip title='Account settings'>
-						<IconButton color='inherit' edge='end' onClick={handleClick}>
-							<PetsIcon />
-						</IconButton>
-					</Tooltip>
-					<AccountMenu handleClose={handleClose} openEl={openEl} anchorEl={anchorEl} />
-				</Toolbar>
-			</AppBar>
-
-			<Box component='nav' sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label='contacts'>
-				<Drawer
-					variant='temporary'
-					open={mobileOpen}
-					onClose={handleDrawerToggle}
-					ModalProps={{ keepMounted: true }}
+		<>
+			<Box sx={{ display: 'flex', height: '90vh' }}>
+				<AppBar
+					position='fixed'
 					sx={{
-						display: { xs: 'block', sm: 'none' },
-						'& . MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+						width: { sm: `calc(100% - ${drawerWidth}px)` },
 					}}>
-					<ContactsDrawer />
-				</Drawer>
-				<Drawer
-					variant='permanent'
-					sx={{
-						display: { xs: 'none', sm: 'block' },
-						'& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-					}}
-					open>
-					<ContactsDrawer />
-				</Drawer>
+					<Toolbar>
+						<IconButton
+							color='inherit'
+							aria-label='open drawer'
+							edge='start'
+							onClick={handleDrawerToggle}
+							sx={{ mr: 2, display: { sm: 'none' } }}
+							aria-controls={openEl ? 'account-menu' : undefined}
+							aria-haspopup='true'
+							aria-expanded={openEl ? 'true' : undefined}>
+							<PeopleAltIcon />
+						</IconButton>
+						<Typography variant='h6' noWrap component='div' sx={{ textAlign: 'right', width: '100%' }}>
+							PawsTemporary
+						</Typography>
+						<Tooltip title='Account settings'>
+							<IconButton color='inherit' edge='end' onClick={handleClick}>
+								<PetsIcon />
+							</IconButton>
+						</Tooltip>
+						<AccountMenu handleClose={handleClose} openEl={openEl} anchorEl={anchorEl} />
+					</Toolbar>
+				</AppBar>
+				<Box component='nav' sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label='contacts'>
+					<Drawer
+						variant='temporary'
+						open={mobileOpen}
+						onClose={handleDrawerToggle}
+						ModalProps={{ keepMounted: true }}
+						sx={{
+							display: { xs: 'block', sm: 'none' },
+							'& . MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+						}}>
+						<ContactsDrawer />
+					</Drawer>
+					<Drawer
+						variant='permanent'
+						sx={{
+							display: { xs: 'none', sm: 'block' },
+							'& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+						}}
+						open>
+						<ContactsDrawer />
+					</Drawer>
+				</Box>
+				<Box component='main' sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+					<Toolbar />
+					<Box sx={{ height: '80vh' }}>
+						{' '}
+						<Typography variant='h6' sx={{ width: '100%' }}>
+							Mapka
+						</Typography>
+						<Typography paragraph>
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos maxime a tempora dignissimos laborum dolorem
+							minima. Laudantium iste consequuntur asperiores perferendis tempore, cupiditate ipsum quaerat temporibus
+							inventore. Deleniti, in dolor.
+						</Typography>
+					</Box>
+					<StickyFooter />
+				</Box>
 			</Box>
-			<Box component='main' sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
-				<Toolbar />
-				<Typography variant='h6' sx={{ width: '100%' }}>
-					Mapka
-				</Typography>
-				<Typography paragraph>
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos maxime a tempora dignissimos laborum dolorem
-					minima. Laudantium iste consequuntur asperiores perferendis tempore, cupiditate ipsum quaerat temporibus
-					inventore. Deleniti, in dolor.
-				</Typography>
-			</Box>
-		</Box>
+		</>
 	)
 }
 
