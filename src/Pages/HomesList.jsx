@@ -6,7 +6,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
-import ContactsDrawer from '../components/ContactsDrawer'
+import ContactsDrawer from '../components/Contacts/ContactsDrawer'
 import PetsIcon from '@mui/icons-material/Pets'
 import Tooltip from '@mui/material/Tooltip'
 import AccountMenu from '../components/AccountMenu'
@@ -84,10 +84,10 @@ const HomesList = () => {
 				</Box>
 				<Box component='main' sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
 					<Toolbar />
-					<Box sx={{ height: '80vh' }}>
+					<Box sx={{ minHeight: '80vh' }}>
 						{' '}
 						<Typography variant='h6' sx={{ width: '100%' }}>
-							Mapka
+							Map
 						</Typography>
 						<Typography paragraph>
 							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos maxime a tempora dignissimos laborum dolorem

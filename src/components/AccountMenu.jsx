@@ -44,26 +44,26 @@ const AccountMenu = ({ handleClose, openEl, anchorEl }) => {
 			transformOrigin={{ horizontal: 'right', vertical: 'top' }}
 			anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
 			<MenuItem onClick={handleClose}>
-				<Avatar sx={{ mr: 2 }} /> Mój profil
+				<Avatar sx={{ mr: 2 }} /> Profile
 			</MenuItem>
 			<Divider />
 			<MenuItem onClick={handleClose}>
 				<ListItemIcon>
 					<PersonAdd fontSize='small' />
 				</ListItemIcon>
-				Dodaj dom tymczasowy
+				Add temporary home
 			</MenuItem>
 			<MenuItem onClick={handleClose}>
 				<ListItemIcon>
 					<Settings fontSize='small' />
 				</ListItemIcon>
-				Ustawienia
+				Settings
 			</MenuItem>
 			<MenuItem onClick={handleClose}>
 				<ListItemIcon>
 					<Logout fontSize='small' />
 				</ListItemIcon>
-				Wyloguj
+				Log out
 			</MenuItem>
 		</Menu>
 	)

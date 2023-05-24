@@ -10,15 +10,27 @@ import PersonIcon from '@mui/icons-material/Person'
 import PhoneIcon from '@mui/icons-material/Phone'
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail'
 import HomeIcon from '@mui/icons-material/Home'
-import { homes } from '../homes'
-import { Box } from '@mui/material'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+import EditIcon from '@mui/icons-material/Edit'
+import { homes } from '../../homes'
+import { useState } from 'react'
+import ContactEditModal from './ContactEditModal'
 
 const ContactsDrawer = () => {
+	const [open, setOpenModal] = useState(false)
+	const [newName, setNewName] = useState('name')
+	const handleOpenModal = (name) => {
+		setOpenModal(true)
+		setNewName(name)
+	}
+	const handleCloseModal = () => setOpenModal(false)
 	return (
 		<Box>
+			<ContactEditModal handleCloseModal={handleCloseModal} open={open} newName={newName} />
 			<Toolbar>
 				<Typography variant='h6' sx={{ fontWeight: 'bold' }}>
-					Lista kontaktów
+					Contacts list
 				</Typography>
 			</Toolbar>
 			<Divider />
@@ -52,7 +64,15 @@ const ContactsDrawer = () => {
 									</ListItemIcon>
 									<ListItemText secondary={email} />
 								</ListItemButton>
+								<Button
+									variant='text'
+									startIcon={<EditIcon />}
+									sx={{ alignSelf: 'flex-end' }}
+									onClick={() => handleOpenModal(name)}>
+									Edit
+								</Button>
 							</ListItem>
+
 							<Divider />
 						</div>
 					)

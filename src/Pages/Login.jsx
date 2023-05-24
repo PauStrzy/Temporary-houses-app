@@ -3,6 +3,8 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
+import Avatar from '@mui/material/Avatar'
+import PetsIcon from '@mui/icons-material/Pets'
 import { Box } from '@mui/material'
 Box
 
@@ -15,11 +17,14 @@ function Login() {
 				alignItems: 'center',
 				justifyContent: 'center',
 				height: '90vh',
-				maxWidth: 300,
+				maxWidth: 350,
 				mx: 'auto',
 			}}>
+			<Avatar>
+				<PetsIcon />
+			</Avatar>
 			<Typography component='h1' variant='h5'>
-				Zaloguj się
+				Sign in
 			</Typography>
 
 			<TextField
@@ -38,15 +43,15 @@ function Login() {
 				fullWidth
 				margin='normal'
 				id='password'
-				label='Hasło'
+				label='Password'
 				name='password'
 				type='password'
 				variant='outlined'
 				autoComplete='current-password'
 			/>
-			<FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Zapamiętaj mnie' />
+			<FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Remember me' />
 			<Button fullWidth variant='contained' type='submit' sx={{ fontSize: 18 }}>
-				Zaloguj się
+				Sign in
 			</Button>
 		</Box>
 	)
