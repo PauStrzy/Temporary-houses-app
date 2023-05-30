@@ -19,15 +19,15 @@ import ContactEditModal from './ContactEditModal'
 
 const ContactsDrawer = () => {
 	const [open, setOpenModal] = useState(false)
-	const [newName, setNewName] = useState('name')
-	const handleOpenModal = (name) => {
+	const [editedHome, setEditedHome] = useState({})
+	const handleOpenModal = (home) => {
 		setOpenModal(true)
-		setNewName(name)
+		setEditedHome(home)
 	}
 	const handleCloseModal = () => setOpenModal(false)
 	return (
 		<Box>
-			<ContactEditModal handleCloseModal={handleCloseModal} open={open} newName={newName} />
+			<ContactEditModal handleCloseModal={handleCloseModal} open={open} editedHome={editedHome} />
 			<Toolbar>
 				<Typography variant='h6' sx={{ fontWeight: 'bold' }}>
 					Contacts list
@@ -68,7 +68,7 @@ const ContactsDrawer = () => {
 									variant='text'
 									startIcon={<EditIcon />}
 									sx={{ alignSelf: 'flex-end' }}
-									onClick={() => handleOpenModal(name)}>
+									onClick={() => handleOpenModal({ id, name, surname, email, mobile, location })}>
 									Edit
 								</Button>
 							</ListItem>
