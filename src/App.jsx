@@ -10,11 +10,15 @@ import { useState } from 'react'
 function App() {
 	const [isLogin, setIsLogin] = useState(true)
 
+	const handleLogin = () => {
+		setIsLogin(!isLogin)
+	}
+
 	return (
 		<div className='App'>
 			<CssBaseline />
 			<Container component='main'>
-				<Box>{isLogin ? <HomesList /> : <Login />}</Box>
+				<Box>{isLogin ? <HomesList handleLogin={handleLogin} /> : <Login handleLogin={handleLogin} />}</Box>
 			</Container>
 			{!isLogin && <StickyFooter />}
 		</div>

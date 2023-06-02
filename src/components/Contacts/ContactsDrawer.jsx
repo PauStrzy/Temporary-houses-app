@@ -8,6 +8,8 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import PersonIcon from '@mui/icons-material/Person'
 import PhoneIcon from '@mui/icons-material/Phone'
+import InfoIcon from '@mui/icons-material/Info'
+import PetsIcon from '@mui/icons-material/Pets'
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail'
 import HomeIcon from '@mui/icons-material/Home'
 import Button from '@mui/material/Button'
@@ -27,7 +29,7 @@ const ContactsDrawer = () => {
 	const handleCloseModal = () => setOpenModal(false)
 	return (
 		<Box>
-			<ContactEditModal handleCloseModal={handleCloseModal} open={open} editedHome={editedHome} />
+			<ContactEditModal handleCloseModal={handleCloseModal} open={open} editedHome={editedHome} key={editedHome.id} />
 			<Toolbar>
 				<Typography variant='h6' sx={{ fontWeight: 'bold' }}>
 					Contacts list
@@ -35,7 +37,7 @@ const ContactsDrawer = () => {
 			</Toolbar>
 			<Divider />
 			<List>
-				{homes.map(({ id, name, surname, email, mobile, location }) => {
+				{homes.map(({ id, name, surname, email, mobile, location, pets, info }) => {
 					return (
 						<div key={id}>
 							<ListItem sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
@@ -64,11 +66,24 @@ const ContactsDrawer = () => {
 									</ListItemIcon>
 									<ListItemText secondary={email} />
 								</ListItemButton>
+
+								<ListItemButton>
+									<ListItemIcon>
+										<PetsIcon fontSize='small' />
+									</ListItemIcon>
+									<ListItemText secondary={pets + (pets === 1 ? ' Pet' : ' Pets')} />
+								</ListItemButton>
+								<ListItemButton>
+									<ListItemIcon>
+										<InfoIcon fontSize='small' />
+									</ListItemIcon>
+									<ListItemText secondary={info} />
+								</ListItemButton>
 								<Button
 									variant='text'
 									startIcon={<EditIcon />}
 									sx={{ alignSelf: 'flex-end' }}
-									onClick={() => handleOpenModal({ id, name, surname, email, mobile, location })}>
+									onClick={() => handleOpenModal({ id, name, surname, email, mobile, location, info, pets })}>
 									Edit
 								</Button>
 							</ListItem>

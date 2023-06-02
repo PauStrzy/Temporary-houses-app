@@ -8,7 +8,7 @@ import PetsIcon from '@mui/icons-material/Pets'
 import { Box } from '@mui/material'
 Box
 
-function Login() {
+function Login({ handleLogin }) {
 	return (
 		<Box
 			sx={{
@@ -50,7 +50,7 @@ function Login() {
 				autoComplete='current-password'
 			/>
 			<FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Remember me' />
-			<Button fullWidth variant='contained' type='submit' sx={{ fontSize: 18 }}>
+			<Button fullWidth variant='contained' type='submit' sx={{ fontSize: 18 }} onClick={handleLogin}>
 				Sign in
 			</Button>
 		</Box>

@@ -14,7 +14,7 @@ import StickyFooter from '../components/StickyFooter'
 
 const drawerWidth = 300
 
-const HomesList = () => {
+const HomesList = ({ handleLogin }) => {
 	const [anchorEl, setAnchorEl] = useState(null)
 	const openEl = Boolean(anchorEl)
 	const [mobileOpen, setMobileOpen] = useState(false)
@@ -53,11 +53,11 @@ const HomesList = () => {
 							PawsTemporary
 						</Typography>
 						<Tooltip title='Account settings'>
-							<IconButton color='inherit' edge='end' onClick={handleClick}>
+							<IconButton color='inherit' edge='end' sx={{ border: 1, borderRadius: 50, ml: 1 }} onClick={handleClick}>
 								<PetsIcon />
 							</IconButton>
 						</Tooltip>
-						<AccountMenu handleClose={handleClose} openEl={openEl} anchorEl={anchorEl} />
+						<AccountMenu handleClose={handleClose} openEl={openEl} anchorEl={anchorEl} handleLogin={handleLogin} />
 					</Toolbar>
 				</AppBar>
 				<Box component='nav' sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label='contacts'>

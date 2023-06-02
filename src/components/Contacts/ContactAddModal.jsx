@@ -24,22 +24,26 @@ const style = {
 	p: 4,
 }
 
-export default function ContactEditModal({ handleCloseModal, open, editedHome }) {
+export default function ContactAddModal({ handleCloseModal, open }) {
 	const [newHome, setNewHome] = useState({})
-	function saveEditedHome() {
-		homes.find((home) => {
-			if (home.id === editedHome.id) {
-				home.name = newHome.name ?? home.name
-				home.surname = newHome.surname ?? home.surname
-				home.address = newHome.address ?? home.address
-				home.mobile = newHome.mobile ?? home.mobile
-				home.location = newHome.location ?? home.location
-				home.email = newHome.email ?? home.email
-				home.pets = newHome.pets ?? home.pets
-				home.info = newHome.info ?? home.info
-			}
+	function saveNewHome() {
+		let newID = homes.length
+		homes.push({
+			id: newID,
+			name: newHome.name,
+			surname: newHome.surname,
+			address: newHome.address,
+			mobile: newHome.mobile,
+			coordinates: newHome.coordinates,
+			pets: newHome.pets,
+
+			location: newHome.location,
+			email: newHome.email,
+			info: newHome.info,
 		})
+		console.log(homes)
 		handleCloseModal()
+		setNewHome({})
 	}
 	const handleChange = (event) => {
 		const { name, value } = event.target
@@ -60,7 +64,7 @@ export default function ContactEditModal({ handleCloseModal, open, editedHome })
 				<Fade in={open}>
 					<Box sx={style}>
 						<Typography id='transition-modal-title' variant='h6' component='h2'>
-							Edit temporary home
+							New temporary home
 						</Typography>
 
 						<Box
@@ -71,81 +75,64 @@ export default function ContactEditModal({ handleCloseModal, open, editedHome })
 							noValidate
 							autoComplete='off'>
 							<FormControl variant='standard'>
-								<InputLabel htmlFor='editedHomeName'>Name</InputLabel>
-								<Input
-									type='text'
-									id='editedHomeName'
-									defaultValue={editedHome.name}
-									name='name'
-									onChange={handleChange}
-								/>
+								<InputLabel htmlFor='newHomeName'>Name</InputLabel>
+								<Input type='text' id='newHomeName' defaultValue={newHome.name} name='name' onChange={handleChange} />
 							</FormControl>
 							<FormControl variant='standard'>
-								<InputLabel htmlFor='editedHomeSurname'>Surname</InputLabel>
+								<InputLabel htmlFor='newHomeSurname'>Surname</InputLabel>
 								<Input
 									type='text'
-									id='editedHomeSurname'
-									defaultValue={editedHome.surname}
+									id='newHomeSurname'
+									defaultValue={newHome.surname}
 									name='surname'
 									onChange={handleChange}
 								/>
 							</FormControl>
 							<FormControl variant='standard'>
-								<InputLabel htmlFor='editedHomeLocation'>Location</InputLabel>
+								<InputLabel htmlFor='newHomeLocation'>Location</InputLabel>
 								<Input
 									type='text'
-									id='editedHomeLocation'
-									defaultValue={editedHome.location}
+									id='newHomeLocation'
+									defaultValue={newHome.location}
 									name='location'
 									onChange={handleChange}
-									aria-describedby='editedHomeLocation'
+									aria-describedby='newHomeLocation'
 								/>
 							</FormControl>
 							<FormControl variant='standard'>
-								<InputLabel htmlFor='editedHomeMobile'>Mobile</InputLabel>
+								<InputLabel htmlFor='newHomeMobile'>Mobile</InputLabel>
 								<Input
 									type='tel'
-									id='editedHomeMobile'
-									defaultValue={editedHome.mobile}
+									id='newHomeMobile'
+									defaultValue={newHome.mobile}
 									name='mobile'
 									onChange={handleChange}
 								/>
 							</FormControl>
 							<FormControl variant='standard'>
-								<InputLabel htmlFor='editedHomeEmail'>E-mail</InputLabel>
+								<InputLabel htmlFor='newHomeEmail'>E-mail</InputLabel>
 								<Input
 									type='email'
-									id='editedHomeEmail'
+									id='newHomeEmail'
 									name='email'
-									defaultValue={editedHome.email}
+									defaultValue={newHome.email}
 									onChange={handleChange}
 								/>
 							</FormControl>
 							<FormControl variant='standard'>
-								<InputLabel htmlFor='editedHomePets'>Pets</InputLabel>
-								<Input
-									type='number'
-									id='editedHomePets'
-									name='pets'
-									defaultValue={editedHome.pets}
-									onChange={handleChange}
-								/>
+								<InputLabel htmlFor='newHomePets'>Number of pets</InputLabel>
+								<Input type='number' id='newHomePets' name='pets' defaultValue={newHome.pets} onChange={handleChange} />
 							</FormControl>
+
 							<FormControl variant='standard'>
-								<InputLabel htmlFor='editedHomeInfo'>Additional information</InputLabel>
-								<Input
-									type='text'
-									id='editedHomeInfo'
-									name='info'
-									defaultValue={editedHome.info}
-									onChange={handleChange}
-								/>
+								<InputLabel htmlFor='newHomeInfo'>Additional information</InputLabel>
+								<Input type='text' id='newHomeInfo' name='info' defaultValue={newHome.info} onChange={handleChange} />
 							</FormControl>
 						</Box>
 						<Button variant='outlined' onClick={handleCloseModal} sx={{ m: 2, width: 100 }}>
 							Cancel
 						</Button>
-						<Button variant='contained' sx={{ m: 2, width: 100 }} onClick={saveEditedHome}>
+						<Button variant='contained' sx={{ m: 2, width: 100 }} onClick={saveNewHome}>
 							Save
 						</Button>
 					</Box>
