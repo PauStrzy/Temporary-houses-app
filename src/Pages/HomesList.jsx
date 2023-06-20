@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton'
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ContactsDrawer from '../components/Contacts/ContactsDrawer'
 import PetsIcon from '@mui/icons-material/Pets'
 import Tooltip from '@mui/material/Tooltip'
@@ -14,10 +14,21 @@ import StickyFooter from '../components/StickyFooter'
 
 const drawerWidth = 300
 
-const HomesList = ({ handleLogin }) => {
+const HomesList = () => {
 	const [anchorEl, setAnchorEl] = useState(null)
 	const openEl = Boolean(anchorEl)
 	const [mobileOpen, setMobileOpen] = useState(false)
+	const [isLoading, setIsLoading] = useState(true)
+
+	useEffect(() => {
+		console.log('homes change')
+
+		setTimeout(() => setIsLoading(false), 1000)
+	}, [isLoading])
+
+	const handleLoading = () => {
+		setIsLoading(true)
+	}
 
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget)
@@ -52,12 +63,12 @@ const HomesList = ({ handleLogin }) => {
 						<Typography variant='h6' noWrap component='div' sx={{ textAlign: 'right', width: '100%' }}>
 							PawsTemporary
 						</Typography>
-						<Tooltip title='Account settings'>
+						<Tooltip title='Account'>
 							<IconButton color='inherit' edge='end' sx={{ border: 1, borderRadius: 50, ml: 1 }} onClick={handleClick}>
 								<PetsIcon />
 							</IconButton>
 						</Tooltip>
-						<AccountMenu handleClose={handleClose} openEl={openEl} anchorEl={anchorEl} handleLogin={handleLogin} />
+						<AccountMenu handleClose={handleClose} openEl={openEl} anchorEl={anchorEl} handleLoading={handleLoading} />
 					</Toolbar>
 				</AppBar>
 				<Box component='nav' sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label='contacts'>
@@ -70,7 +81,7 @@ const HomesList = ({ handleLogin }) => {
 							display: { xs: 'block', sm: 'none' },
 							'& . MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
 						}}>
-						<ContactsDrawer />
+						<ContactsDrawer handleLoading={handleLoading} isLoading={isLoading} />
 					</Drawer>
 					<Drawer
 						variant='permanent'
@@ -79,7 +90,7 @@ const HomesList = ({ handleLogin }) => {
 							'& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
 						}}
 						open>
-						<ContactsDrawer />
+						<ContactsDrawer handleLoading={handleLoading} isLoading={isLoading} />
 					</Drawer>
 				</Box>
 				<Box component='main' sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>

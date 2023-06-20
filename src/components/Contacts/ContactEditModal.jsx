@@ -24,7 +24,7 @@ const style = {
 	p: 4,
 }
 
-export default function ContactEditModal({ handleCloseModal, open, editedHome }) {
+export default function ContactEditModal({ handleCloseModal, open, editedHome, handleLoading }) {
 	const [newHome, setNewHome] = useState({})
 	function saveEditedHome() {
 		homes.find((home) => {
@@ -40,6 +40,7 @@ export default function ContactEditModal({ handleCloseModal, open, editedHome })
 			}
 		})
 		handleCloseModal()
+		handleLoading()
 	}
 	const handleChange = (event) => {
 		const { name, value } = event.target

@@ -24,7 +24,7 @@ const style = {
 	p: 4,
 }
 
-export default function ContactAddModal({ handleCloseModal, open }) {
+export default function ContactAddModal({ handleCloseModal, open, handleLoading }) {
 	const [newHome, setNewHome] = useState({})
 	function saveNewHome() {
 		let newID = homes.length
@@ -35,15 +35,15 @@ export default function ContactAddModal({ handleCloseModal, open }) {
 			address: newHome.address,
 			mobile: newHome.mobile,
 			coordinates: newHome.coordinates,
-			pets: newHome.pets,
-
+			pets: newHome.pets || 0,
 			location: newHome.location,
 			email: newHome.email,
 			info: newHome.info,
 		})
-		console.log(homes)
+
 		handleCloseModal()
 		setNewHome({})
+		handleLoading()
 	}
 	const handleChange = (event) => {
 		const { name, value } = event.target

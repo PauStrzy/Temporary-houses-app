@@ -9,7 +9,7 @@ import Logout from '@mui/icons-material/Logout'
 import { useState } from 'react'
 import ContactAddModal from './Contacts/ContactAddModal'
 
-const AccountMenu = ({ handleClose, openEl, anchorEl, handleLogin }) => {
+const AccountMenu = ({ handleClose, openEl, anchorEl, handleLoading, handleLogin }) => {
 	const [open, setOpenModal] = useState(false)
 	const handleOpenModal = () => {
 		setOpenModal(true)
@@ -18,7 +18,7 @@ const AccountMenu = ({ handleClose, openEl, anchorEl, handleLogin }) => {
 	const handleCloseModal = () => setOpenModal(false)
 	return (
 		<>
-			<ContactAddModal handleCloseModal={handleCloseModal} open={open} />
+			<ContactAddModal handleCloseModal={handleCloseModal} open={open} handleLoading={handleLoading} />
 			<Menu
 				anchorEl={anchorEl}
 				id='account-menu'
