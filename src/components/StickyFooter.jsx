@@ -18,17 +18,16 @@ function Copyright() {
 
 const StickyFooter = () => {
 	return (
-		<Box sx={{ display: 'flex', flexDirection: 'column', height: '10vh' }}>
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				textAlign: 'center',
+			}}>
 			<CssBaseline />
 
-			<Box
-				component='footer'
-				sx={{
-					py: 3,
-					px: 2,
-					mt: 'auto',
-				}}>
-				<Container maxWidth='sm'>
+			<Box component='footer'>
+				<Container maxWidth='sm' sx={{ py: 0.5 }}>
 					<Copyright />
 				</Container>
 			</Box>
